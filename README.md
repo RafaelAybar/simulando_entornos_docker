@@ -19,6 +19,21 @@ Por ello propongo que el dominio sea test.servicio.cliente.com, quedando nuestro
 
 ## 4. Directorios para persistir los datos
 
+## 5. Servicios a probar:
+    - Elasticsearch: Almacenará los logs de los contenedores, registrando cualquier traza que pudieran llegar a soltar los servicios dockerizados, incluido el propio elastic.
+
+    - Fluentbit: Es el servicio que enviará los logs a Elasticsearch
+
+    - Nginx: A parte de servir la web del site de pruebas, hará de proxy inverso.
+
+    - Grafana: Es un servicio web que permite hacer gráficos y paneles con la información del sistema
+
+    - Prometheus: Se encarga de la monitorización de servicios, dado que es un entorno local, no necesitaremos enviar alertas por correo.
+
+    - Portainer: Es una interfaz web que permite ver los contenedores y gestionarlos de forma básica.
+
+    - CAdvisor: Exporta métricas de los contenedores que pueden ser ingestadas por Grafana y prometheus
+
 ## 5. Establecemos el orden de arranque de los servicios
 
 ## 6. Comprobaciones extra (auditoría)

@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+
   grafana:
     image: grafana/grafana
     container_name: grafana
@@ -31,6 +32,18 @@ services:
   prometheus:
     image: prom/prometheus
     container_name: prometheus
+    networks:
+      - demo
+
+  elastic:
+    image: elasticsearch
+    container_name: elastic
+    networks:
+      - demo
+
+  fluentbit:
+    image:
+    container_name:
     networks:
       - demo
 
