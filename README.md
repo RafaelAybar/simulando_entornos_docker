@@ -3,7 +3,7 @@
 ## 1. Mapeando en nuestro /etc/hosts los dominios (o no)
 Si no tenemos comprado ningún dominio, pues lo mapeamos a nuestro local, pero como el dominio local coincida con preproducción o con producción, vamos a tener un problema grave.
 
-Por ello propongo que el dominio sea test.servicio.cliente.com, quedando nuestro /etc/hosts así:
+Por ello propongo que el dominio sea test.servicio.nombredesarrollador.com, quedando nuestro /etc/hosts así:
 
     127.0.0.1 test.grafana.rafa.com
 
@@ -14,6 +14,8 @@ Por ello propongo que el dominio sea test.servicio.cliente.com, quedando nuestro
     127.0.0.1 test.portainer.rafa.com
 
 ## 2. Generamos una CA
+    ¿Para qué queremos crear una CA? Pues podríamos comprobar a generar certificados de cliente para otras aplicaciones que pudiéramos estar desarrollando, por ejemplo,
+    para comprobar que sólo los que tengan nuestros certificados acceden a nuestros servicios
 
 ## 3. Firmamos los certificados
 
