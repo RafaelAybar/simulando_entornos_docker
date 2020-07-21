@@ -18,6 +18,11 @@ Por ello propongo que el dominio sea test.servicio.cliente.com, quedando nuestro
 ## 3. Firmamos los certificados
 
 ## 4. Directorios para persistir los datos
+    - nginx_conf: Contiene todos los virtualhost de nginx.
+    - portainer_data: Contiene la configuración de los usuarios de portainer.
+    - certs: Contiene todos .cert, .key usados por nginx
+    - env_files: Contiene todos los ajustes parametrizables de cada servicio
+
 
 ## 5. Servicios a probar:
     - Elasticsearch: Almacenará los logs de los contenedores, registrando cualquier traza que pudieran llegar a soltar los servicios dockerizados, incluido el propio elastic.
