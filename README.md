@@ -19,10 +19,10 @@ Por ello propongo que el dominio sea test.servicio.nombredesarrollador.com, qued
 ## 3. Firmamos los certificados
 
 ## 4. Directorios para persistir los datos
-    - nginx_conf: Contiene todos los virtualhost de nginx.
-    - portainer_data: Contiene la configuración de los usuarios de portainer.
-    - certs: Contiene todos .cert, .key usados por nginx
-    - env_files: Contiene todos los ajustes parametrizables de cada servicio
+- nginx_conf: Contiene todos los virtualhost de nginx.
+- portainer_data: Contiene la configuración de los usuarios de portainer.
+- certs: Contiene todos .cert, .key usados por nginx
+- env_files: Contiene todos los ajustes parametrizables de cada servicio
 
 
 ## 5. Servicios a probar:
