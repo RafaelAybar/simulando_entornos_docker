@@ -22,7 +22,14 @@ Por ello propongo que el dominio sea test.servicio.nombredesarrollador.com, qued
 - nginx_conf: Contiene todos los virtualhost de nginx.
 - portainer_data: Contiene la configuración de los usuarios de portainer.
 - certs: Contiene todos .cert, .key usados por nginx
-- env_files: Contiene todos los ajustes parametrizables de cada servicio
+- env_files: Contiene todos los ajustes parametrizables de cada servicio. Ejemplos con grafana:
+
+
+    GF_DEFAULT_INSTANCE_NAME=grafana.test.rafa.com
+
+    GF_SECURITY_ADMIN_USER=rafael
+
+    GF_SERVER_DOMAIN=grafana.test.rafa.com
 
 
 ## 5. Servicios a probar:
