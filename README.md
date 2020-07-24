@@ -25,11 +25,11 @@ Por ello propongo que el dominio sea test.servicio.nombredesarrollador.com, qued
 - env_files: Contiene todos los ajustes parametrizables de cada servicio. Ejemplos con grafana:
 
 
-    GF_DEFAULT_INSTANCE_NAME=grafana.test.rafa.com
+    GF_DEFAULT_INSTANCE_NAME=test.grafana.rafa.com
 
     GF_SECURITY_ADMIN_USER=rafael
 
-    GF_SERVER_DOMAIN=grafana.test.rafa.com
+    GF_SERVER_DOMAIN=test.grafana.rafa.com
 
 
 ## 5. Servicios a probar:
