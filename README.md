@@ -50,5 +50,7 @@ Por ello propongo que el dominio sea test.servicio.nombredesarrollador.com, qued
 ## 5. Establecemos el orden de arranque de los servicios
 
 ## 6. Comprobaciones extra (auditoría)
+- Análisis de SSL/TSL con [testssl.sh](https://github.com/drwetter/testssl.sh)
+    (pendiente de documentar)
 
 ## 7. ¡Alerta, malas prácticas!
