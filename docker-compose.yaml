@@ -52,6 +52,8 @@ services:
     container_name: prometheus
     ports:
       - "127.0.0.1:9090:9090"
+    volumes:
+      - ./env_files/:/etc/prometheus/
     depends_on:
       - cadvisor
     networks:
