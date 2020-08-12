@@ -31,7 +31,33 @@ Por ello propongo que el dominio sea test.servicio.nombredesarrollador.com, qued
 
     GF_SERVER_DOMAIN=test.grafana.rafa.com
 
+Para configurar fluend, podemos usar esta configuración dentro del fichero fluent.conf
 
+```    # fluentd/conf/fluent.conf
+<source>
+  @type forward
+  port 24224
+  bind 0.0.0.0
+</source>
+<match *.**>
+  @type copy
+  <store>
+    @type elasticsearch
+    host elasticsearch
+    port 9200
+    logstash_format true
+    logstash_prefix fluentd
+    logstash_dateformat %Y%m%d
+    include_tag_key true
+    type_name access_log
+    tag_key @log_name
+    flush_interval 1s
+  </store>
+  <store>
+    @type stdout
+  </store>
+</match>
+```
 ## 5. Servicios a probar:
 - Elasticsearch: Almacenará los logs de los contenedores, registrando cualquier traza que pudieran llegar a soltar los servicios dockerizados, incluido el propio elastic.
 
