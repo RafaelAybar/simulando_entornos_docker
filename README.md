@@ -79,4 +79,11 @@ Para configurar fluend, podemos usar esta configuración dentro del fichero flue
 - Análisis de SSL/TSL con [testssl.sh](https://github.com/drwetter/testssl.sh)
     (pendiente de documentar)
 
+- Auditorías de imágenes de Docker con [trivy](https://github.com/aquasecurity/trivy)
+    (pendiente de documentar)
+
 ## 7. ¡Alerta, malas prácticas!
+  - No reposites los ficheros .env o que contengan credenciales
+  - Ten cuidado con el orden de arranque de servicios
+  - Usa contraseñas seguras, puedes generarlas con [passwordgenerator](https://passwordsgenerator.net/)
+  - Guarda las contraseñas en un lugar seguro, como por ejemplo [keepassxc](https://keepassxc.org/project/)
