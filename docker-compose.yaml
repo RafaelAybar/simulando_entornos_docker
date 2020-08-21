@@ -5,6 +5,8 @@ services:
   grafana:
     image: grafana/grafana
     container_name: grafana
+    ports:
+      - "127.0.0.1:3000:3000"
     env_file:
     # Repositar variables de entorno es mala praxis
       - ./env_files/grafana.env
@@ -19,6 +21,10 @@ services:
     ports:
       - 443:443
       - 80:80
+    volumes:
+      - ./nginx_conf:/etc/nginx/conf.d/
+    depends_on:
+      - grafana
     networks:
       - demo
 
@@ -35,7 +41,8 @@ services:
     networks:
       - demo
     volumes:
-      - portainer_data:/data
+      - ./portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
 
   cadvisor:
     image: gcr.io/google_containers/cadvisor
