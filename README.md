@@ -60,7 +60,7 @@ Para configurar fluend, podemos usar esta configuración dentro del fichero flue
 </match>
 ```
 
-Para configurar prometheus podemos usar:
+Para configurar prometheus podemos usar estos valores en el fichero prometheus.yml:
 
 ```
 global:
