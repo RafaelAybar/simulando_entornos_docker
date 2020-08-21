@@ -24,12 +24,13 @@ Por ello propongo que el dominio sea test.servicio.nombredesarrollador.com, qued
 - certs: Contiene todos .cert, .key usados por nginx
 - env_files: Contiene todos los ajustes parametrizables de cada servicio. Ejemplos con grafana:
 
-
+```
     GF_DEFAULT_INSTANCE_NAME=test.grafana.rafa.com
 
     GF_SECURITY_ADMIN_USER=rafael
 
     GF_SERVER_DOMAIN=test.grafana.rafa.com
+```
 
 Para configurar fluend, podemos usar esta configuración dentro del fichero fluent.conf
 
@@ -58,6 +59,29 @@ Para configurar fluend, podemos usar esta configuración dentro del fichero flue
   </store>
 </match>
 ```
+
+Para configurar prometheus podemos usar:
+
+```
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['localhost:9090']
+
+  - job_name: 'cadvisor'
+    static_configs:
+    - targets: ['cadvisor:8080']
+```
+
 ## 5. Servicios a probar:
 - Elasticsearch: Almacenará los logs de los contenedores, registrando cualquier traza que pudieran llegar a soltar los servicios dockerizados, incluido el propio elastic.
 
