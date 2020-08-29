@@ -1,3 +1,4 @@
 portainer_data/
 *.env
 env_files/
+elastic_data/

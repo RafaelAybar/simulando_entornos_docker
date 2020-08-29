@@ -70,10 +70,14 @@ services:
       - demo
 
   elastic:
-    image: elasticsearch
-    container_name: elastic
+    image: elasticsearch:7.9.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
     ports:
       - "127.0.0.1:9200:9200"
+    volumes:
+      - ./elastic_data/:/usr/share/elasticsearch/data
     networks:
       - demo
 
