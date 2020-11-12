@@ -70,7 +70,7 @@ services:
       - demo
 
   elastic:
-    image: elasticsearch:7.9.0
+    image: elasticsearch:7.9.3
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
