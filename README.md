@@ -28,7 +28,7 @@ Por ello propongo que el dominio sea test.servicio.nombredesarrollador.com, qued
 ## 5. Servicios a probar:
 - Elasticsearch: Almacenará los logs de los contenedores, registrando cualquier traza que pudieran llegar a soltar los servicios dockerizados, incluido el propio elastic.
 
-- Fluent-bit: Es el servicio que enviará los logs a Elasticsearch. [Plantilla de fluentbit](docs/fluet-bit.md)
+- Fluent-bit: Es el servicio que enviará los logs a Elasticsearch. [Plantilla de fluentbit](docs/fluent-bit.md)
 
 - Nginx: A parte de servir la web del site de pruebas, hará de proxy inverso.
 
