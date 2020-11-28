@@ -2,3 +2,4 @@ portainer_data/
 *.env
 env_files/
 elastic_data/
+grafana_data/

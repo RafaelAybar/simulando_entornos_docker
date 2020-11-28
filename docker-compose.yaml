@@ -7,13 +7,19 @@ services:
     container_name: grafana
     ports:
       - "127.0.0.1:3000:3000"
-    env_file:
-    # Repositar variables de entorno es mala praxis
-      - ./env_files/grafana.env
+    #env_file:
+    ## Repositar variables de entorno es mala praxis
+    #  - ./env_files/grafana.env
+    user: "1000" #Cambiar por $(id -u)
+
+    volumes:
+      - ./grafana_data:/var/lib/grafana
     networks:
       - demo
+    logging:
+      driver: "fluentd"
     depends_on:
-      - prometheus
+      - kibana
 
   nginx:
     image: nginx
@@ -24,7 +30,9 @@ services:
     volumes:
       - ./nginx_conf:/etc/nginx/conf.d/
     depends_on:
-      - grafana
+      - elasticsearch
+    logging:
+      driver: "fluentd"
     networks:
       - demo
 
@@ -43,6 +51,11 @@ services:
     volumes:
       - ./portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
+    logging:
+      driver: "fluentd"
+
+    depends_on:
+      - fluent-bit
 
   cadvisor:
     image: gcr.io/google_containers/cadvisor
@@ -66,31 +79,51 @@ services:
       - ./env_files/:/etc/prometheus/
     depends_on:
       - cadvisor
+    #logging: NO SOPORTADO
+    #  driver: "fluentd"
     networks:
       - demo
 
-  elastic:
+  elasticsearch:
     image: elasticsearch:7.9.3
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
     ports:
       - "127.0.0.1:9200:9200"
+      - "127.0.0.1:9300:9300"
     volumes:
       - ./elastic_data/:/usr/share/elasticsearch/data
     networks:
       - demo
-
-  fluentd:
-    image: fluent/fluentd
-    container_name: fluentd
-    volumes:
-      - ./env_files/:/fluentd/etc
+    logging:
+      driver: "fluentd"
     depends_on:
-      - elastic
+      - fluent-bit
+# Kibana siempre ha de tener la misma versión que elasticsearch
+  kibana:
+    image: "kibana:7.9.3"
+    env_file:
+      - env_files/kibana.env
+    container_name: kibana
+    ports:
+      - "127.0.0.1:5601:5601"
+    networks:
+      - demo
+    logging:
+      driver: "fluentd"
+    depends_on:
+      - elasticsearch
+
+  fluent-bit:
+    image: fluent/fluent-bit
+    container_name: fluent-bit
     ports:
       - "127.0.0.1:24224:24224"
-      - "127.0.0.1:24224:24224/udp"
+    volumes:
+      - ./env_files/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+    depends_on:
+      - cadvisor
     networks:
       - demo
 
