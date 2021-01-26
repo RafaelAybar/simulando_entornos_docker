@@ -85,7 +85,7 @@ services:
       - demo
 
   elasticsearch:
-    image: elasticsearch:7.9.3
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
@@ -102,7 +102,7 @@ services:
       - fluent-bit
 # Kibana siempre ha de tener la misma versión que elasticsearch
   kibana:
-    image: "kibana:7.9.3"
+    image: "docker.elastic.co/kibana/kibana:7.10.2"
     env_file:
       - env_files/kibana.env
     container_name: kibana
