@@ -11,3 +11,6 @@ Además, añadir prometheus y elastic como fuentes de datos es muy simple:
     1. Abrimos el panel de Grafana y clicamos en la el engranaje, que el menú de configuración.
 
         ![datasources](media/configuracion_data_sources_grafana.png)
+
+    2. En la lista de opciones seleccionamos Elastic, y rellenamos los campos de la siguiente manera:
+        ![ajusteselastic](media/configuracion_elasticsearch.png)
