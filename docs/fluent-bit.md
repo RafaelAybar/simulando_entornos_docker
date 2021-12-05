@@ -2,23 +2,23 @@ Para configurar fluentbit, podemos usar esta configuración genérica dentro del
 
 
 ```
-filebeat.inputs:
-- type: container
-  paths:
-    - '/var/lib/docker/containers/*/*.log'
+[SERVICE]
+	log_level debug
 
-processors:
-- add_docker_metadata:
-    host: "unix:///var/run/docker.sock"
+# The stdin plugin allows to retrieve valid JSON text messages over the standard input interface (stdin)
+[INPUT]
+	Name forward
 
-- decode_json_fields:
-    fields: ["message"]
-    target: "json"
-    overwrite_keys: true
-
-output.elasticsearch:
-  hosts: ["elasticsearch:9200"]
-  indices:
-    - index: "filebeat-%{[agent.version]}-%{+yyyy.MM.dd}"
+# The Record Modifier Filter plugin allows to append fields or to exclude specific fields.
+[FILTER]
+	Name record_modifier
+	Match *
+# The stdout output plugin allows to print to the standard output the data received through the input plugin.
+[OUTPUT]
+	Name es
+	Match **
+	Host elasticsearch
+	Port 9200
+	Index monitoring
 
 ```
